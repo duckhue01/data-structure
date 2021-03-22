@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "*.sass": "css",
+        "random": "cpp",
+        "*.tcc": "cpp"
+    }
+}

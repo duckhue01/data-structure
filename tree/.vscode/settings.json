@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "*.sass": "css",
+        "array": "cpp",
+        "string": "cpp",
+        "string_view": "cpp",
+        "algorithm": "cpp",
+        "iostream": "cpp"
+    }
+}
