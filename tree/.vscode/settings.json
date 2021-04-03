@@ -5,6 +5,13 @@
         "string": "cpp",
         "string_view": "cpp",
         "algorithm": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "*.tcc": "cpp",
+        "deque": "cpp",
+        "unordered_map": "cpp",
+        "vector": "cpp",
+        "ostream": "cpp",
+        "list": "cpp",
+        "unordered_set": "cpp"
     }
 }

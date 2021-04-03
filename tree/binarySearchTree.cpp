@@ -149,11 +149,6 @@ public:
             
             searchBetween(k1, k2, root->right);
         }
-        
-       
-
-
-
     }
     void printInOrder(Node* temp)
     {
@@ -161,7 +156,7 @@ public:
             return;
     
         this->printInOrder(temp->left);
-        cout << temp->data.name << ' ';
+        cout << temp->data.id << ' ';
         this->printInOrder(temp->right);
     }
     void printPostOrder(Node* temp)
@@ -172,23 +167,18 @@ public:
         this->printInOrder(temp->left);
         
         this->printInOrder(temp->right);
-        cout << temp->data.name << ' ';
+        cout << temp->data.id << ' ';
     }
     void printPreOrder(Node* temp)
     {
         if (temp == NULL)
             return;
-        cout << temp->data.name << ' ';
+        cout << temp->data.id << ' ';
         this->printInOrder(temp->left);
         
         this->printInOrder(temp->right);
     }
 
-
-    
-
-    
-    
 };
 
 int main(int argc, char const *argv[])
@@ -200,11 +190,11 @@ int main(int argc, char const *argv[])
         
     };
 
-    sinhvien newsv =  {"cao duc khue" ,100};
+    sinhvien newsv =  {"cao duc khue" ,10};
     sinhvien newsv1 =  {"nguyen tuan dung" ,4};
-    sinhvien newsv2 =  {"tong cong tu" ,222};
+    sinhvien newsv2 =  {"tong cong tu" ,22};
     sinhvien newsv3 =  {"cao duc khue3" ,1};
-    sinhvien newsv4 =  {"cao duc khue4" ,444};
+    sinhvien newsv4 =  {"cao duc khue4" ,44};
     
     binarySearchTree<sinhvien> myTree(newsv);
     myTree.insertNode(newsv1, myTree.getRoot());
@@ -213,21 +203,16 @@ int main(int argc, char const *argv[])
     myTree.insertNode(newsv4, myTree.getRoot());
 
     
-    cout<<"\nduyet theo thu tu giua:";
-    myTree.printInOrder(myTree.getRoot());
+    // cout<<"\nduyet theo thu tu giua:";
+    // myTree.printInOrder(myTree.getRoot());
 
     cout<<"\nduyet theo thu tu truoc:";
     myTree.printPreOrder(myTree.getRoot());
 
-    cout<<"\nduyet theo thu tu sau:";
-    myTree.printPostOrder(myTree.getRoot());
+    // cout<<"\nduyet theo thu tu sau:";
+    // myTree.printPostOrder(myTree.getRoot());
 
-    if (myTree.searchByID(myTree.getRoot(),100 ))
-    {
-        cout<<"\n value existed";
-    }
-    
-    
+
 
 
 

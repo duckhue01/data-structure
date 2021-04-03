@@ -24,11 +24,10 @@ public:
         
     };
     void insertNode(type value) {
-        // Node* temp = root;
         Node* newNode = new Node(value);
         queue<Node*> queue;
         queue.push(root);
-        while ( !queue.empty())
+        while (!queue.empty())
         {
             Node* temp = queue.front();
             queue.pop();
@@ -55,6 +54,7 @@ public:
         
         
     }
+   
     Node* getRoot() {
         return this->root;
     }
@@ -73,23 +73,105 @@ public:
         }
 
 
-    void printPreOrder() {
+    void printPreOrder(Node* temp) 
+        {
+            if (temp == NULL)
+                return;
+            cout << temp->data << ' ';
+            this->printInOrder(temp->left);
+            
+            this->printInOrder(temp->right);
+        };
 
+    void printPostOrder(Node* temp) {
+        if (temp == NULL)
+            return;
+       
+        this->printInOrder(temp->left);   
+        this->printInOrder(temp->right);
+        cout << temp->data << ' ';
     };
 
-    void printPostOrder() {
+    void delDeepestNode(Node* deletedNode) {
+        queue<Node*> queue;
+        queue.push(this->root);
+        while (!queue.empty())
+        {
+            Node* temp = queue.front();
+            queue.pop();
+            if (temp == deletedNode) {
+                temp = NULL;
+                delete (deletedNode);
+                return;
+            }
+            if (temp->left == deletedNode)
+            {
+                temp->left = NULL;
+                delete (deletedNode);
+                return;
 
-    };
-    
-    void deleteNode() {
-        
+            } else {
+                 queue.push(temp->left);
+            }
+
+            if (temp->right == deletedNode)
+            {
+                temp->right = NULL;
+                delete (deletedNode);
+                return;
+            } else {
+                                 queue.push(temp->right);
+            }
+            
+        }
+       
     }
 
+
+
     
-   
+    void deleteNode(type value) {
 
-   
+        if (root == NULL)
+            return;
+    
+        if (root->left == NULL && root->right == NULL) {
+            if (root->data == value)
+                delDeepestNode(root);
+                
+        }
+        
+        queue<Node*> queue;
+        queue.push(this->getRoot());
 
+        Node* del_node = NULL;
+        Node* temp = NULL;
+        while (!queue.empty())
+        {
+            temp = queue.front();
+            queue.pop();
+            if (temp->data == value)
+                del_node = temp;
+
+
+            if (temp->left)
+                queue.push(temp->left);
+
+
+            if (temp->right )
+                queue.push(temp->right);
+
+            
+        }
+
+        if (del_node != NULL)
+        {
+            del_node->data = temp->data;
+            delDeepestNode(temp);
+        } else {
+            cout<< " khong tim thay phan tu";
+        }
+    }
 };
 
 
@@ -104,8 +186,9 @@ int main(int argc, char const *argv[])
     tree.insertNode(50);
     tree.insertNode(60);
 
-
-    
+    tree.printInOrder(tree.getRoot());
+    tree.deleteNode(60);
+    tree.printInOrder(tree.getRoot());
 
     cout<<"hello world";
 
